@@ -9,38 +9,234 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VoiceLibraryRouteImport } from './routes/voice-library'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as PhoneNumbersRouteImport } from './routes/phone-numbers'
+import { Route as KnowledgeBasesRouteImport } from './routes/knowledge-bases'
+import { Route as IntegrationsRouteImport } from './routes/integrations'
+import { Route as ContactsRouteImport } from './routes/contacts'
+import { Route as CampaignsRouteImport } from './routes/campaigns'
+import { Route as CallRecordingsRouteImport } from './routes/call-recordings'
+import { Route as AssistantsRouteImport } from './routes/assistants'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CampaignsNewRouteImport } from './routes/campaigns.new'
 
+const VoiceLibraryRoute = VoiceLibraryRouteImport.update({
+  id: '/voice-library',
+  path: '/voice-library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhoneNumbersRoute = PhoneNumbersRouteImport.update({
+  id: '/phone-numbers',
+  path: '/phone-numbers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeBasesRoute = KnowledgeBasesRouteImport.update({
+  id: '/knowledge-bases',
+  path: '/knowledge-bases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsRoute = IntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactsRoute = ContactsRouteImport.update({
+  id: '/contacts',
+  path: '/contacts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignsRoute = CampaignsRouteImport.update({
+  id: '/campaigns',
+  path: '/campaigns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CallRecordingsRoute = CallRecordingsRouteImport.update({
+  id: '/call-recordings',
+  path: '/call-recordings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistantsRoute = AssistantsRouteImport.update({
+  id: '/assistants',
+  path: '/assistants',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CampaignsNewRoute = CampaignsNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => CampaignsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assistants': typeof AssistantsRoute
+  '/call-recordings': typeof CallRecordingsRoute
+  '/campaigns': typeof CampaignsRouteWithChildren
+  '/contacts': typeof ContactsRoute
+  '/integrations': typeof IntegrationsRoute
+  '/knowledge-bases': typeof KnowledgeBasesRoute
+  '/phone-numbers': typeof PhoneNumbersRoute
+  '/settings': typeof SettingsRoute
+  '/voice-library': typeof VoiceLibraryRoute
+  '/campaigns/new': typeof CampaignsNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assistants': typeof AssistantsRoute
+  '/call-recordings': typeof CallRecordingsRoute
+  '/campaigns': typeof CampaignsRouteWithChildren
+  '/contacts': typeof ContactsRoute
+  '/integrations': typeof IntegrationsRoute
+  '/knowledge-bases': typeof KnowledgeBasesRoute
+  '/phone-numbers': typeof PhoneNumbersRoute
+  '/settings': typeof SettingsRoute
+  '/voice-library': typeof VoiceLibraryRoute
+  '/campaigns/new': typeof CampaignsNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assistants': typeof AssistantsRoute
+  '/call-recordings': typeof CallRecordingsRoute
+  '/campaigns': typeof CampaignsRouteWithChildren
+  '/contacts': typeof ContactsRoute
+  '/integrations': typeof IntegrationsRoute
+  '/knowledge-bases': typeof KnowledgeBasesRoute
+  '/phone-numbers': typeof PhoneNumbersRoute
+  '/settings': typeof SettingsRoute
+  '/voice-library': typeof VoiceLibraryRoute
+  '/campaigns/new': typeof CampaignsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/assistants'
+    | '/call-recordings'
+    | '/campaigns'
+    | '/contacts'
+    | '/integrations'
+    | '/knowledge-bases'
+    | '/phone-numbers'
+    | '/settings'
+    | '/voice-library'
+    | '/campaigns/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/assistants'
+    | '/call-recordings'
+    | '/campaigns'
+    | '/contacts'
+    | '/integrations'
+    | '/knowledge-bases'
+    | '/phone-numbers'
+    | '/settings'
+    | '/voice-library'
+    | '/campaigns/new'
+  id:
+    | '__root__'
+    | '/'
+    | '/assistants'
+    | '/call-recordings'
+    | '/campaigns'
+    | '/contacts'
+    | '/integrations'
+    | '/knowledge-bases'
+    | '/phone-numbers'
+    | '/settings'
+    | '/voice-library'
+    | '/campaigns/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssistantsRoute: typeof AssistantsRoute
+  CallRecordingsRoute: typeof CallRecordingsRoute
+  CampaignsRoute: typeof CampaignsRouteWithChildren
+  ContactsRoute: typeof ContactsRoute
+  IntegrationsRoute: typeof IntegrationsRoute
+  KnowledgeBasesRoute: typeof KnowledgeBasesRoute
+  PhoneNumbersRoute: typeof PhoneNumbersRoute
+  SettingsRoute: typeof SettingsRoute
+  VoiceLibraryRoute: typeof VoiceLibraryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/voice-library': {
+      id: '/voice-library'
+      path: '/voice-library'
+      fullPath: '/voice-library'
+      preLoaderRoute: typeof VoiceLibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/phone-numbers': {
+      id: '/phone-numbers'
+      path: '/phone-numbers'
+      fullPath: '/phone-numbers'
+      preLoaderRoute: typeof PhoneNumbersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge-bases': {
+      id: '/knowledge-bases'
+      path: '/knowledge-bases'
+      fullPath: '/knowledge-bases'
+      preLoaderRoute: typeof KnowledgeBasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations': {
+      id: '/integrations'
+      path: '/integrations'
+      fullPath: '/integrations'
+      preLoaderRoute: typeof IntegrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacts': {
+      id: '/contacts'
+      path: '/contacts'
+      fullPath: '/contacts'
+      preLoaderRoute: typeof ContactsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaigns': {
+      id: '/campaigns'
+      path: '/campaigns'
+      fullPath: '/campaigns'
+      preLoaderRoute: typeof CampaignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/call-recordings': {
+      id: '/call-recordings'
+      path: '/call-recordings'
+      fullPath: '/call-recordings'
+      preLoaderRoute: typeof CallRecordingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistants': {
+      id: '/assistants'
+      path: '/assistants'
+      fullPath: '/assistants'
+      preLoaderRoute: typeof AssistantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +244,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/campaigns/new': {
+      id: '/campaigns/new'
+      path: '/new'
+      fullPath: '/campaigns/new'
+      preLoaderRoute: typeof CampaignsNewRouteImport
+      parentRoute: typeof CampaignsRoute
+    }
   }
 }
 
+interface CampaignsRouteChildren {
+  CampaignsNewRoute: typeof CampaignsNewRoute
+}
+
+const CampaignsRouteChildren: CampaignsRouteChildren = {
+  CampaignsNewRoute: CampaignsNewRoute,
+}
+
+const CampaignsRouteWithChildren = CampaignsRoute._addFileChildren(
+  CampaignsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssistantsRoute: AssistantsRoute,
+  CallRecordingsRoute: CallRecordingsRoute,
+  CampaignsRoute: CampaignsRouteWithChildren,
+  ContactsRoute: ContactsRoute,
+  IntegrationsRoute: IntegrationsRoute,
+  KnowledgeBasesRoute: KnowledgeBasesRoute,
+  PhoneNumbersRoute: PhoneNumbersRoute,
+  SettingsRoute: SettingsRoute,
+  VoiceLibraryRoute: VoiceLibraryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
