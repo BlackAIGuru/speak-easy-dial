@@ -12,12 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VoiceLibraryRouteImport } from './routes/voice-library'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as PhoneNumbersRouteImport } from './routes/phone-numbers'
-import { Route as KnowledgeBasesRouteImport } from './routes/knowledge-bases'
 import { Route as IntegrationsRouteImport } from './routes/integrations'
 import { Route as ContactsRouteImport } from './routes/contacts'
 import { Route as CampaignsRouteImport } from './routes/campaigns'
 import { Route as CallRecordingsRouteImport } from './routes/call-recordings'
-import { Route as AssistantsRouteImport } from './routes/assistants'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CampaignsNewRouteImport } from './routes/campaigns.new'
 
@@ -34,11 +32,6 @@ const SettingsRoute = SettingsRouteImport.update({
 const PhoneNumbersRoute = PhoneNumbersRouteImport.update({
   id: '/phone-numbers',
   path: '/phone-numbers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KnowledgeBasesRoute = KnowledgeBasesRouteImport.update({
-  id: '/knowledge-bases',
-  path: '/knowledge-bases',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IntegrationsRoute = IntegrationsRouteImport.update({
@@ -61,11 +54,6 @@ const CallRecordingsRoute = CallRecordingsRouteImport.update({
   path: '/call-recordings',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AssistantsRoute = AssistantsRouteImport.update({
-  id: '/assistants',
-  path: '/assistants',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -79,12 +67,10 @@ const CampaignsNewRoute = CampaignsNewRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/assistants': typeof AssistantsRoute
   '/call-recordings': typeof CallRecordingsRoute
   '/campaigns': typeof CampaignsRouteWithChildren
   '/contacts': typeof ContactsRoute
   '/integrations': typeof IntegrationsRoute
-  '/knowledge-bases': typeof KnowledgeBasesRoute
   '/phone-numbers': typeof PhoneNumbersRoute
   '/settings': typeof SettingsRoute
   '/voice-library': typeof VoiceLibraryRoute
@@ -92,12 +78,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/assistants': typeof AssistantsRoute
   '/call-recordings': typeof CallRecordingsRoute
   '/campaigns': typeof CampaignsRouteWithChildren
   '/contacts': typeof ContactsRoute
   '/integrations': typeof IntegrationsRoute
-  '/knowledge-bases': typeof KnowledgeBasesRoute
   '/phone-numbers': typeof PhoneNumbersRoute
   '/settings': typeof SettingsRoute
   '/voice-library': typeof VoiceLibraryRoute
@@ -106,12 +90,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/assistants': typeof AssistantsRoute
   '/call-recordings': typeof CallRecordingsRoute
   '/campaigns': typeof CampaignsRouteWithChildren
   '/contacts': typeof ContactsRoute
   '/integrations': typeof IntegrationsRoute
-  '/knowledge-bases': typeof KnowledgeBasesRoute
   '/phone-numbers': typeof PhoneNumbersRoute
   '/settings': typeof SettingsRoute
   '/voice-library': typeof VoiceLibraryRoute
@@ -121,12 +103,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/assistants'
     | '/call-recordings'
     | '/campaigns'
     | '/contacts'
     | '/integrations'
-    | '/knowledge-bases'
     | '/phone-numbers'
     | '/settings'
     | '/voice-library'
@@ -134,12 +114,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/assistants'
     | '/call-recordings'
     | '/campaigns'
     | '/contacts'
     | '/integrations'
-    | '/knowledge-bases'
     | '/phone-numbers'
     | '/settings'
     | '/voice-library'
@@ -147,12 +125,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/assistants'
     | '/call-recordings'
     | '/campaigns'
     | '/contacts'
     | '/integrations'
-    | '/knowledge-bases'
     | '/phone-numbers'
     | '/settings'
     | '/voice-library'
@@ -161,12 +137,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AssistantsRoute: typeof AssistantsRoute
   CallRecordingsRoute: typeof CallRecordingsRoute
   CampaignsRoute: typeof CampaignsRouteWithChildren
   ContactsRoute: typeof ContactsRoute
   IntegrationsRoute: typeof IntegrationsRoute
-  KnowledgeBasesRoute: typeof KnowledgeBasesRoute
   PhoneNumbersRoute: typeof PhoneNumbersRoute
   SettingsRoute: typeof SettingsRoute
   VoiceLibraryRoute: typeof VoiceLibraryRoute
@@ -195,13 +169,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PhoneNumbersRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/knowledge-bases': {
-      id: '/knowledge-bases'
-      path: '/knowledge-bases'
-      fullPath: '/knowledge-bases'
-      preLoaderRoute: typeof KnowledgeBasesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/integrations': {
       id: '/integrations'
       path: '/integrations'
@@ -228,13 +195,6 @@ declare module '@tanstack/react-router' {
       path: '/call-recordings'
       fullPath: '/call-recordings'
       preLoaderRoute: typeof CallRecordingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/assistants': {
-      id: '/assistants'
-      path: '/assistants'
-      fullPath: '/assistants'
-      preLoaderRoute: typeof AssistantsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -268,12 +228,10 @@ const CampaignsRouteWithChildren = CampaignsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AssistantsRoute: AssistantsRoute,
   CallRecordingsRoute: CallRecordingsRoute,
   CampaignsRoute: CampaignsRouteWithChildren,
   ContactsRoute: ContactsRoute,
   IntegrationsRoute: IntegrationsRoute,
-  KnowledgeBasesRoute: KnowledgeBasesRoute,
   PhoneNumbersRoute: PhoneNumbersRoute,
   SettingsRoute: SettingsRoute,
   VoiceLibraryRoute: VoiceLibraryRoute,
@@ -281,3 +239,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
