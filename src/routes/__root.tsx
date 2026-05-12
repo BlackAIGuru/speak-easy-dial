@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "paynet-broacdcasting" },
+      { name: "description", content: "Call Whisperer automates outbound voice campaigns with AI-driven call flows and DTMF input." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "paynet-broacdcasting" },
+      { property: "og:description", content: "Call Whisperer automates outbound voice campaigns with AI-driven call flows and DTMF input." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "paynet-broacdcasting" },
+      { name: "twitter:description", content: "Call Whisperer automates outbound voice campaigns with AI-driven call flows and DTMF input." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2b2792a2-5011-4b65-a2ba-9e222967ac32/id-preview-3f7b5d0f--d739809d-3213-4b45-a1cb-cd5c04f42ba4.lovable.app-1778577853686.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2b2792a2-5011-4b65-a2ba-9e222967ac32/id-preview-3f7b5d0f--d739809d-3213-4b45-a1cb-cd5c04f42ba4.lovable.app-1778577853686.png" },
     ],
     links: [
       {
